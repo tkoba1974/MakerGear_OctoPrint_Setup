@@ -1,6 +1,6 @@
 # coding=utf-8
 from __future__ import absolute_import, division, print_function, unicode_literals
-__plugin_pythoncompat__ = ">=2.7,<4"
+__plugin_pythoncompat__ = ">=3,<4"
 
 import re
 import subprocess
@@ -19,7 +19,7 @@ import time
 import datetime
 import errno
 import sys
-import urllib.request, urllib.error, urllib.parse
+import urllib2.request, urllib2.error, urllib2.parse
 from logging.handlers import TimedRotatingFileHandler
 from logging.handlers import RotatingFileHandler
 from zipfile import *
