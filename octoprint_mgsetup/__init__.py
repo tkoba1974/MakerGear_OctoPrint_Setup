@@ -1010,7 +1010,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 			# f = open('/boot/config.txt', 'a')
 			# f.write("\ndtoverlay=pi3-disable-wifi")
 			# f.close()
-			self._execute('sudo cp /home/pi/oprint/local/lib/python2.7/site-packages/octoprint_mgsetup/static/maintenance/scripts/config.txt.wifiDisable /boot/config.txt')
+			self._execute('sudo cp /home/pi/oprint/local/lib/python3.7/site-packages/octoprint_mgsetup/static/maintenance/scripts/config.txt.wifiDisable /boot/config.txt')
 			self._plugin_manager.send_plugin_message("mgsetup", dict(commandResponse = "Copied config.txt.wifiDisable to config.txt to Disable Wifi.  Will now reboot."))
 			self._execute("sudo reboot")
 
@@ -1111,7 +1111,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 			self.resetRegistration()
 		elif action["action"] == 'patch':
 			self._logger.info("Patch started.")
-			self._execute("/home/pi/oprint/local/lib/python2.7/site-packages/octoprint_mgsetup/static/patch/patch.sh")
+			self._execute("/home/pi/oprint/local/lib/python3.7/site-packages/octoprint_mgsetup/static/patch/patch.sh")
 		elif action["action"] == 'updateFirmware':
 			self.updateLocalFirmware()
 		elif action["action"] == 'showIfconfig':
@@ -1167,12 +1167,12 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 		elif action["action"] == 'logpatch':
 			# "/home/pi/OctoPrint/venv/bin/OctoPrint_Mgsetup/octoprint_mgsetup/static/patch/logpatch.sh"
 			# self._execute("/home/pi/OctoPrint/venv/bin/OctoPrint-Mgsetup/octoprint_mgsetup/static/patch/logpatch.sh")
-			# self._execute("/home/pi/oprint/local/lib/python2.7/site-packages/octoprint_mgsetup/static/patch/logpatch.sh")
+			# self._execute("/home/pi/oprint/local/lib/python3.7/site-packages/octoprint_mgsetup/static/patch/logpatch.sh")
 			self._logger.info("Logpatch started.")
 
 
-			#subprocess.call("/home/pi/oprint/local/lib/python2.7/site-packages/octoprint_mgsetup/static/patch/logpatch.sh")
-			self.mgLog(self._execute("/home/pi/oprint/local/lib/python2.7/site-packages/octoprint_mgsetup/static/patch/logpatch.sh"),2)
+			#subprocess.call("/home/pi/oprint/local/lib/python3.7/site-packages/octoprint_mgsetup/static/patch/logpatch.sh")
+			self.mgLog(self._execute("/home/pi/oprint/local/lib/python3.7/site-packages/octoprint_mgsetup/static/patch/logpatch.sh"),2)
 
 			# if not os.path.isfile("/home/pi/.octoprint/logs/dmesg"):
 			# 	if os.path.isfile("/var/log/dmesg"):
@@ -1417,12 +1417,12 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 					displayVersion=self._plugin_version,
 					# version check: github repository
 					type="github_release",
-					user="MakerGear",
+					user="tkoba1974",
 					repo="MakerGear_OctoPrint_Setup",
 					current=self._plugin_version,
 					release_branch = "master",
 					# update method: pip
-					pip="https://github.com/MakerGear/MakerGear_OctoPrint_Setup/archive/{target_version}.zip"
+					pip="https://github.com/tkoba1974/MakerGear_OctoPrint_Setup/archive/{target_version}.zip"
 				)
 			)
 		if (self.pluginVersion == "refactor"):
@@ -1433,13 +1433,13 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 					
 					# version check: github repository
 					type="github_release",
-					user="MakerGear",
+					user="tkoba1974",
 					repo="MakerGear_OctoPrint_Setup",
 					current=self._plugin_version,
 					release_branch = "refactor",
 					prerelease = True,
 					# update method: pip
-					pip="https://github.com/MakerGear/MakerGear_OctoPrint_Setup/archive/{target_version}.zip"
+					pip="https://github.com/tkoba1974/MakerGear_OctoPrint_Setup/archive/{target_version}.zip"
 				)
 			)
 
@@ -1463,6 +1463,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 #__plugin_settings_overlay__ = dict(server=dict(port=5001))
 
 __plugin_name__ = "MakerGear Setup"
+__plugin_pythoncompat__ = ">=2.7,<4"
 
 __plugin_implementation__ = MGSetupPlugin()
 
