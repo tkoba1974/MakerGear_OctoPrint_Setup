@@ -1,5 +1,4 @@
 # coding=utf-8
-from __future__ import absolute_import, division, print_function
 
 ########################################################################################################################
 ### Do not forget to adjust the following variables to your own plugin.
