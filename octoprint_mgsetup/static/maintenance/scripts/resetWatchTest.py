@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import RPi.GPIO as GPIO
 import subprocess, time, socket
@@ -136,10 +136,10 @@ def shutdownHold():
   ser = serial.Serial("/dev/ttyS0", 115200, timeout=1)
   ser.close()
   ser.open()
-  ser.write("M300 S932 P400 \r\n")
-  ser.write("M300 S783 P400 \r\n")
-  ser.write("M300 S932 P400 \r\n")
-  ser.write("M300 S783 P400 \r\n")
+  ser.write(str.encode('M300 S932 P400 \r\n'))
+  ser.write(str.encode('M300 S783 P400 \r\n'))
+  ser.write(str.encode('M300 S932 P400 \r\n'))
+  ser.write(str.encode('M300 S783 P400 \r\n'))
   ser.close()
 
 
@@ -174,9 +174,9 @@ def resetPasswordHold():
 
   ser.close()
   ser.open()
-  ser.write("M300 S523 P400 \r\n")
-  ser.write("M300 S623 P400 \r\n")
-  ser.write("M300 S723 P400 \r\n")
+  ser.write(str.encode('M300 S523 P400 \r\n'))
+  ser.write(str.encode('M300 S623 P400 \r\n'))
+  ser.write(str.encode('M300 S723 P400 \r\n'))
   ser.close()
   
 
@@ -276,16 +276,16 @@ def sshOn():
   ser = serial.Serial("/dev/ttyS0", 115200, timeout=1)
   ser.close()
   ser.open()
-  ser.write("M300 S932 P400 \r\n")
-  ser.write("M300 S0 P400 \r\n")
-  ser.write("M300 S932 P400 \r\n")
-  ser.write("M300 S0 P400 \r\n")
-  ser.write("M300 S932 P400 \r\n")
-  ser.write("M300 S0 P400 \r\n")
-  ser.write("M300 S932 P400 \r\n")
-  ser.write("M300 S0 P400 \r\n")
-  ser.write("M300 S932 P400 \r\n")
-  ser.write("M300 S0 P400 \r\n")
+  ser.write(str.encode('M300 S932 P400 \r\n'))
+  ser.write(str.encode('M300 S0 P400 \r\n'))
+  ser.write(str.encode('M300 S932 P400 \r\n'))
+  ser.write(str.encode('M300 S0 P400 \r\n'))
+  ser.write(str.encode('M300 S932 P400 \r\n'))
+  ser.write(str.encode('M300 S0 P400 \r\n'))
+  ser.write(str.encode('M300 S932 P400 \r\n'))
+  ser.write(str.encode('M300 S0 P400 \r\n'))
+  ser.write(str.encode('M300 S932 P400 \r\n'))
+  ser.write(str.encode('M300 S0 P400 \r\n'))
   ser.close()
 
   subprocess.call("sync")

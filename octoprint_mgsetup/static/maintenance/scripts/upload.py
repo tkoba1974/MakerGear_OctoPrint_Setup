@@ -14,7 +14,7 @@
 
 # TODO: reset rambo and handle connections before starting incase of weird long moves that would block M503. This is really only a problem if someone
 # has long moves going and tries to update from one major version of marlin to another.
-
+from __future__ import absolute_import, division, print_function, unicode_literals
 
 import serial
 import re
@@ -109,7 +109,7 @@ zprobe = None
 matcher = None
 zprobeMatcher = None
 
-ser.write("M115\n\r") #request firmware info
+ser.write(str.encode('M115\n\r')) #request firmware info
 print("m115")
 
 lineCount = 0	#keep track of how many lines we read
@@ -153,7 +153,7 @@ ser.flushInput()	#clear any latent input
 ser.flushOutput()   #clear any latent output
 
 
-ser.write("M503\n\r")	#request EEPROM info
+ser.write(str.encode('M503\n\r'))	#request EEPROM info
 
 
 #value variables
@@ -298,24 +298,24 @@ if matcher != None :
 
 
 	if m206String != None:
-		ser.write(m206String)
+		ser.write(str.encode(m206String))
 		subprocess.check_output("echo M206 X" + m206X + " Y" + m206Y + " Z" + m206Z + " >> /home/pi/.octoprint/logs/firmware.log",shell=True)
 
 		#print "write M206"
 	if m851String != None:
-		ser.write(m851String)
+		ser.write(str.encode(m851String))
 		subprocess.check_output("echo M851 Z" + m851Z + " >> /home/pi/.octoprint/logs/firmware.log",shell=True)
 		#print "write M851"
 
 	if int(extruderCount) == 2:
 		if m218String != None:
-			ser.write(m218String)
+			ser.write(str.encode(m218String))
 		subprocess.check_output("echo M218 T1 X" + m218X + " Y" + m218Y + " Z" + m218Z + " >> /home/pi/.octoprint/logs/firmware.log",shell=True)
 		#print "write M218"
 
 
 
-	ser.write("M500\n\r") #save parameters
+	ser.write(str.encode('M500\n\r')) #save parameters
 
 
 
