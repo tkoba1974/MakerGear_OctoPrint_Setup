@@ -1,5 +1,5 @@
 # coding=utf-8
-from __future__ import absolute_import
+from __future__ import absolute_import, division, print_function, unicode_literals
 __plugin_pythoncompat__ = ">=2.7,<4"
 
 import re
