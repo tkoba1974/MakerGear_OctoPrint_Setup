@@ -118,16 +118,16 @@ while lineCount < 20 : #max out to 100 lines
 	data_raw = ser.readline() #read one serial line
 	lineCount = lineCount + 1 #incerease number of lines we've read
 
-	if data_raw.startswith("ok") :	#ok means we're done  - should put something 
+	if data_raw.startswith(str.encode('ok')) :	#ok means we're done  - should put something 
 		#print "done"
 		lineCount = 20
 
 	#look if its a line we need
-	elif data_raw.startswith("Cap:Z_PROBE:") :
+	elif data_raw.startswith(str.encode('Cap:Z_PROBE:')) :
 		responseLineProbe = data_raw
 
 	#look if its a line we need
-	elif data_raw.startswith("FIRMWARE_NAME") :
+	elif data_raw.startswith(str.encode('FIRMWARE_NAME')) :
 		responseLine = data_raw
 
 #match to figure out version, machine type, and extruder count
@@ -181,18 +181,18 @@ if matcher != None:
 
 		#look if its a line we need
 
-		if data_raw.startswith("ok") :
+		if data_raw.startswith(str.encode('ok')) :
 			#print "done"
 			lineCount = 100
 
-		elif data_raw.startswith("echo:  M206") :
+		elif data_raw.startswith(str.encode('echo:  M206')) :
 			matcher = re.match (r'echo:  M206 X(-?[0-9]{1,3}\.[0-9][0-9]) Y(-?[0-9]{1,3}\.[0-9][0-9]) Z(-?[0-9]{1,3}\.[0-9][0-9])', responseLine)
 			if matcher:
 				m206X = matcher.group(1) 
 				m206Y = matcher.group(2) 
 				m206Z = matcher.group(3) 
 
-		elif data_raw.startswith("echo:  M218") :
+		elif data_raw.startswith(str.encode('echo:  M218')) :
 			matcher = re.match (r'echo:  M218 T1 X(-?[0-9]{1,3}\.[0-9][0-9]) Y(-?[0-9]{1,3}\.[0-9][0-9]) Z(-?[0-9]{1,3}\.[0-9][0-9])', responseLine)
 			if matcher:
 				m218X = matcher.group(1) 
@@ -200,7 +200,7 @@ if matcher != None:
 				m218Z = matcher.group(3) 
 
 
-		elif data_raw.startswith("echo:  M851") :
+		elif data_raw.startswith(str.encode('echo:  M851')) :
 			matcher = re.match (r'echo:  M851 Z(-?[0-9]\.[0-9][0-9])', responseLine)
 			if matcher:
 				m851Z = matcher.group(1) 
