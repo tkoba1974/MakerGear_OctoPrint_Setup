@@ -584,7 +584,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 		# kwargs.update(dict(async=True, stdout=sarge.Capture(), stderr=sarge.Capture()))
 
 		try:
-			p = sarge.run(command, async=True, stdout=sarge.Capture(), stderr=sarge.Capture())
+			p = sarge.run(command, async_=True, stdout=sarge.Capture(), stderr=sarge.Capture())
 			while len(p.commands) == 0:
 				# somewhat ugly... we can't use wait_events because
 				# the events might not be all set if an exception
