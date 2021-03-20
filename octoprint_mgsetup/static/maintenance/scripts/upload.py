@@ -209,7 +209,7 @@ if matcher != None:
 if m206X != None and  m206Y != None and  m206Z != None  :
 	#print ("M206 X" + m206X + " Y" + m206Y + " Z" + m206Z)
 	sys.stdout.flush()
-	m206String = "M206 X" + m206X + " Y" + m206Y + " Z" + m206Z + "\n\r"
+	m206String = "M206 X" + m206X.decode() + " Y" + m206Y.decode() + " Z" + m206Z.decode() + "\n\r"
 	#print m206String
 
 else:
@@ -226,7 +226,7 @@ if extruderCount == None:
 elif int(extruderCount) == 2:
 
 	if m218X != None and  m218Y != None and  m218Z != None  :
-		m218String = "M218 T1 X" + m218X + " Y" + m218Y + " Z" + m218Z + "\n\r"
+		m218String = "M218 T1 X" + m218X.decode() + " Y" + m218Y.decode() + " Z" + m218Z.decode() + "\n\r"
 	else:
 		print ("Could not read previous M503 M218 - Please proceed to Quick Check after firmware has uploaded")
 		subprocess.check_output('echo Could not read previous M503 M218 - Please proceed to Quick Check after firmware has uploaded >> /home/pi/.octoprint/logs/firmware.log',shell=True)
@@ -239,7 +239,7 @@ if zprobe == None:
 elif int(zprobe) == 1:
 	if m851Z != None  :
 		sys.stdout.flush()
-		m851String = "M851 Z" + m851Z + "\n\r"
+		m851String = "M851 Z" + m851Z.decode() + "\n\r"
 
 	else:
 		print ("Could not read previous M503 M851 - Please proceed to Quick Check after firmware has uploaded")
