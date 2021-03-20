@@ -1,9 +1,8 @@
 # coding=utf-8
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import absolute_import
+__plugin_pythoncompat__ = ">=2.7,<4"
 
 import re
-
-
 import subprocess
 import os
 import shutil
@@ -1463,7 +1462,6 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 #__plugin_settings_overlay__ = dict(server=dict(port=5001))
 
 __plugin_name__ = "MakerGear Setup"
-__plugin_pythoncompat__ = ">=2.7,<4"
 
 __plugin_implementation__ = MGSetupPlugin()
 
