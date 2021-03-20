@@ -1,5 +1,5 @@
 # coding=utf-8
-from __future__ import absolute_import, division, print_function
+from __future__ import absolute_import, division
 __plugin_pythoncompat__ = ">=3,<4"
 
 import re
@@ -264,7 +264,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 				shutil.copy(full_src_name, dest)
 				self._logger.info("Had to copy "+file_name+" to scripts folder.")
 			else:
-				if ((hashlib.md5(open(full_src_name).read()).hexdigest()) != (hashlib.md5(open(full_dest_name).read()).hexdigest())):
+				if ((hashlib.md5((open(full_src_name).read()).encode("UTF-8")).hexdigest()) != (hashlib.md5((open(full_dest_name).read()).encode("UTF-8")).hexdigest())):
 					shutil.copy(full_src_name, dest)
 					self._logger.info("Had to overwrite "+file_name+" with new version.")
 
@@ -278,7 +278,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 				shutil.copy(full_src_name, dest)
 				self._logger.info("Had to copy "+file_name+" to scripts folder.")
 			else:
-				if ((hashlib.md5(open(full_src_name).read()).hexdigest()) != (hashlib.md5(open(full_dest_name).read()).hexdigest())):
+				if ((hashlib.md5((open(full_src_name).read()).encode("UTF-8")).hexdigest()) != (hashlib.md5((open(full_dest_name).read()).encode("UTF-8")).hexdigest())):
 					shutil.copy(full_src_name, dest)
 					self._logger.info("Had to overwrite "+file_name+" with new version.")
 			if ".sh" in file_name:
@@ -294,7 +294,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 				shutil.copy(full_src_name, dest)
 				self._logger.info("Had to copy "+file_name+" to scripts folder.")
 			else:
-				if ((hashlib.md5(open(full_src_name).read()).hexdigest()) != (hashlib.md5(open(full_dest_name).read()).hexdigest())):
+				if ((hashlib.md5((open(full_src_name).read()).encode("UTF-8")).hexdigest()) != (hashlib.md5((open(full_dest_name).read()).encode("UTF-8")).hexdigest())):
 					shutil.copy(full_src_name, dest)
 					self._logger.info("Had to overwrite "+file_name+" with new version.")
 		try:
@@ -347,7 +347,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 
 		#if
 		try:
-			smbHashVal = (hashlib.md5(open("/etc/samba/smb.conf").read()).hexdigest()) # != "03dc1620b398cbe3d2d82e83c20c1905":
+			smbHashVal = (hashlib.md5((open("/etc/samba/smb.conf").read()).encode("UTF-8")).hexdigest()) # != "03dc1620b398cbe3d2d82e83c20c1905":
 			if smbHashVal == "44c057b0ffc7ab0f88c1923bdd32b559":
 				self.smbpatchstring = "Patch Already In Place"
 				self.mgLog("smb.conf hash matches patched file, no need to patch",2)
