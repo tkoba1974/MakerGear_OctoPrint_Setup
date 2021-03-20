@@ -47,7 +47,7 @@ except:
 
 
 try:
-    target = open("/home/pi/oprint/lib/python2.7/site-packages/octoprint_mgsetup/static/js/hostname.js", 'w')
+    target = open("/home/pi/oprint/lib/python3.7/site-packages/octoprint_mgsetup/static/js/hostname.js", 'w')
 
 
     line1 = '''var hostName = \"'''+ newhost +'''\";
