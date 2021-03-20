@@ -186,14 +186,14 @@ if matcher != None:
 			lineCount = 100
 
 		elif data_raw.startswith(str.encode('echo:  M206')) :
-			matcher = re.match (r'echo:  M206 X(-?[0-9]{1,3}\.[0-9][0-9]) Y(-?[0-9]{1,3}\.[0-9][0-9]) Z(-?[0-9]{1,3}\.[0-9][0-9])', responseLine)
+			matcher = re.match (r'echo:  M206 X(-?[0-9]{1,3}\.[0-9][0-9]) Y(-?[0-9]{1,3}\.[0-9][0-9]) Z(-?[0-9]{1,3}\.[0-9][0-9])'.encode('utf-8'), responseLine)
 			if matcher:
 				m206X = matcher.group(1) 
 				m206Y = matcher.group(2) 
 				m206Z = matcher.group(3) 
 
 		elif data_raw.startswith(str.encode('echo:  M218')) :
-			matcher = re.match (r'echo:  M218 T1 X(-?[0-9]{1,3}\.[0-9][0-9]) Y(-?[0-9]{1,3}\.[0-9][0-9]) Z(-?[0-9]{1,3}\.[0-9][0-9])', responseLine)
+			matcher = re.match (r'echo:  M218 T1 X(-?[0-9]{1,3}\.[0-9][0-9]) Y(-?[0-9]{1,3}\.[0-9][0-9]) Z(-?[0-9]{1,3}\.[0-9][0-9])'.encode('utf-8'), responseLine)
 			if matcher:
 				m218X = matcher.group(1) 
 				m218Y = matcher.group(2) 
@@ -201,7 +201,7 @@ if matcher != None:
 
 
 		elif data_raw.startswith(str.encode('echo:  M851')) :
-			matcher = re.match (r'echo:  M851 Z(-?[0-9]\.[0-9][0-9])', responseLine)
+			matcher = re.match (r'echo:  M851 Z(-?[0-9]\.[0-9][0-9])'.encode('utf-8'), responseLine)
 			if matcher:
 				m851Z = matcher.group(1) 
 
