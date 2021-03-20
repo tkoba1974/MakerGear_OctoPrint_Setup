@@ -1,5 +1,5 @@
 # coding=utf-8
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import absolute_import, division, print_function
 __plugin_pythoncompat__ = ">=3,<4"
 
 import re
@@ -19,7 +19,9 @@ import time
 import datetime
 import errno
 import sys
-import urllib2.request, urllib2.error, urllib2.parse
+import urllib.request
+import urllib.error
+import urllib.parse
 from logging.handlers import TimedRotatingFileHandler
 from logging.handlers import RotatingFileHandler
 from zipfile import *
