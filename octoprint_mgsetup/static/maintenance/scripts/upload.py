@@ -115,7 +115,7 @@ print("m115")
 lineCount = 0	#keep track of how many lines we read
 while lineCount < 20 : #max out to 100 lines
 
-	data_raw = ser.readline() #read one serial line
+	data_raw = (ser.readline()).decode() #read one serial line
 	lineCount = lineCount + 1 #incerease number of lines we've read
 
 	if data_raw.startswith("ok") :	#ok means we're done  - should put something 
@@ -209,7 +209,7 @@ if matcher != None:
 if m206X != None and  m206Y != None and  m206Z != None  :
 	#print ("M206 X" + m206X + " Y" + m206Y + " Z" + m206Z)
 	sys.stdout.flush()
-	m206String = "M206 X" + m206X.decode() + " Y" + m206Y.decode() + " Z" + m206Z.decode() + "\n\r"
+	m206String = "M206 X" + m206X + " Y" + m206Y + " Z" + m206Z + "\n\r"
 	#print m206String
 
 else:
@@ -226,7 +226,7 @@ if extruderCount == None:
 elif int(extruderCount) == 2:
 
 	if m218X != None and  m218Y != None and  m218Z != None  :
-		m218String = "M218 T1 X" + m218X.decode() + " Y" + m218Y.decode() + " Z" + m218Z.decode() + "\n\r"
+		m218String = "M218 T1 X" + m218X + " Y" + m218Y + " Z" + m218Z + "\n\r"
 	else:
 		print ("Could not read previous M503 M218 - Please proceed to Quick Check after firmware has uploaded")
 		subprocess.check_output('echo Could not read previous M503 M218 - Please proceed to Quick Check after firmware has uploaded >> /home/pi/.octoprint/logs/firmware.log',shell=True)
@@ -239,7 +239,7 @@ if zprobe == None:
 elif int(zprobe) == 1:
 	if m851Z != None  :
 		sys.stdout.flush()
-		m851String = "M851 Z" + m851Z.decode() + "\n\r"
+		m851String = "M851 Z" + m851Z + "\n\r"
 
 	else:
 		print ("Could not read previous M503 M851 - Please proceed to Quick Check after firmware has uploaded")
@@ -265,15 +265,14 @@ ser.close #close serial port so that AVRdude can use it
 #           | $$
 #           |__/
 print ("Starting Upload")
+print ("Please press reset switch of RAMBo")
 subprocess.check_output('echo Starting Upload >> /home/pi/.octoprint/logs/firmware.log',shell=True)
 sys.stdout.flush()
 
 
 
-
-
 try:
-	subprocess.check_output('/home/pi/.platformio/packages/tool-avrdude/avrdude -cwiring -p atmega2560 -P/dev/ttyS0 -b115200 -D -Uflash:w:.pioenvs/megaatmega2560/firmware.hex >> /home/pi/.octoprint/logs/firmware.log',shell=True)
+	subprocess.check_output('/home/pi/.platformio/packages/tool-avrdude/avrdude -C/home/pi/.platformio/packages/tool-avrdude/avrdude.conf -cwiring -p atmega2560 -P/dev/ttyS0 -b115200 -D -Uflash:w:.pio/build/megaatmega2560/firmware.hex >> /home/pi/.octoprint/logs/firmware.log',shell=True)
 	print("Upload Successful ")
 	subprocess.check_output('echo Upload Sucessful >> /home/pi/.octoprint/logs/firmware.log',shell=True)
 	sys.stdout.flush()
