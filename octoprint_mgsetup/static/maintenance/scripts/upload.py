@@ -265,14 +265,15 @@ ser.close #close serial port so that AVRdude can use it
 #           | $$
 #           |__/
 print ("Starting Upload")
-print ("Please press reset switch of RAMBo")
+print ("Please press the reset switch of RAMBo shortly during timeout indication")
 subprocess.check_output('echo Starting Upload >> /home/pi/.octoprint/logs/firmware.log',shell=True)
 sys.stdout.flush()
 
 
-
 try:
-	subprocess.check_output('/home/pi/.platformio/packages/tool-avrdude/avrdude -C/home/pi/.platformio/packages/tool-avrdude/avrdude.conf -cwiring -p atmega2560 -P/dev/ttyS0 -b115200 -D -Uflash:w:.pio/build/megaatmega2560/firmware.hex >> /home/pi/.octoprint/logs/firmware.log',shell=True)
+	#subprocess.check_output('/home/pi/.platformio/packages/tool-avrdude/avrdude -C/home/pi/.platformio/packages/tool-avrdude/avrdude.conf -cwiring -p atmega2560 -P/dev/ttyS0 -b115200 -D -Uflash:w:.pio/build/megaatmega2560/firmware.hex >> /home/pi/.octoprint/logs/firmware.log',shell=True)
+	os.chdir("/home/pi/m3firmware/")
+	subprocess.check_output('platformio run -t upload --upload-port /dev/ttyS0 >> /home/pi/.octoprint/logs/firmware.log',shell=True)
 	print("Upload Successful ")
 	subprocess.check_output('echo Upload Sucessful >> /home/pi/.octoprint/logs/firmware.log',shell=True)
 	sys.stdout.flush()
