@@ -321,7 +321,9 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 				os.makedirs('/home/pi/m3firmware')
 				self._execute("platformio init -d /home/pi/m3firmware")
 				self._execute("git -C /home/pi/m3firmware clone https://github.com/MakerGear/m3firmware.git src")
-				shutil.copy(self._basefolder+"/static/maintenance/m3firmware/platform.ini",'/home/pi/m3firmware')		    
+				src = (self._basefolder+"/static/maintenance/m3firmware/")
+				full_src_name = os.path.join(src, "platform.ini")
+				shutil.copy(full_src_name,'/home/pi/m3firmware')		    
 		except OSError:
 			if not os.path.isdir('/home/pi/m3firmware'):
 				raise
