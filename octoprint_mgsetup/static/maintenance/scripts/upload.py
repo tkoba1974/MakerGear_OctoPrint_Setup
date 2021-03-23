@@ -103,6 +103,7 @@ ser.flushOutput()   #clear any latent output
 responseLine = None
 responseLineProbe = None
 version = None
+source_code_url = None
 printerName = None
 extruderCount = None
 zprobe = None
@@ -132,7 +133,7 @@ while lineCount < 20 : #max out to 100 lines
 
 #match to figure out version, machine type, and extruder count
 if responseLineProbe != None:
-	matcher = re.match (r'FIRMWARE_NAME:Marlin ([0-9]\.[0-9]\.[0-9]\.?[0-9]?\.?[0-9]?) \(Github\) SOURCE_CODE_URL:https://github.com/MakerGear/m3firmware PROTOCOL_VERSION:1.0 MACHINE_TYPE:(.*) EXTRUDER_COUNT:([1-2])', responseLine)
+	matcher = re.match (r'FIRMWARE_NAME:Marlin ([0-9]\.[0-9]\.[0-9]\.?[0-9]?\.?[0-9]?) \(Github\) SOURCE_CODE_URL:(.*) PROTOCOL_VERSION:1.0 MACHINE_TYPE:(.*) EXTRUDER_COUNT:([1-2])', responseLine)
 	zprobeMatcher = re.match (r'Cap:Z_PROBE:([0-1])', responseLineProbe)
 
 if (matcher == None) or (zprobeMatcher == None):
@@ -142,8 +143,9 @@ if (matcher == None) or (zprobeMatcher == None):
 #get version, printerName, extruder count
 if matcher:
 	version = matcher.group(1) 
-	printerName = matcher.group(2) 
-	extruderCount = matcher.group(3) 
+	source_code_url = matcher.group(2) 
+	printerName = matcher.group(3) 
+	extruderCount = matcher.group(4) 
 
 #get zprobe values
 if zprobeMatcher:

@@ -316,6 +316,15 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 		except:
 			raise
 
+		try:  #preparing the stock firmware; should only ever need to be run once
+            if not os.path.isdir('/home/pi/m3firmware'):
+			    os.makedirs('/home/pi/m3firmware')
+			    self._execute("platformio init -d /home/pi/m3firmware")
+			    self._execute("git -C /home/pi/m3firmware clone https://github.com/MakerGear/m3firmware.git src")
+			    shutil.copyfile(self._basefolder+"/static/maintenance/m3firmware/platform.ini",'/home/pi/m3firmware')		    
+		except OSError:
+			if not os.path.isdir('/home/pi/m3firmware'):
+				raise
 
 		try:
 			self.ip = str(([l for l in ([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1], [[(s.connect(('8.8.8.8', 53)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]]) if l][0][0]))
