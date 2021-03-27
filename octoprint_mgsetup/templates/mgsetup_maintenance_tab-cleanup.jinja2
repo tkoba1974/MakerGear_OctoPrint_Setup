@@ -268,59 +268,57 @@
 			<div >
 				{# <hr> #}
 			</div>
-			<li class="panel">
+			{#<li class="panel">
 
-				<h3><a data-toggle="collapse" data-parent="#maintenanceAccordionTasks" href="#bedLevelingTasks"> Bed Leveling <i class="icon-chevron-down"></i></a></h3>
+			{#	<h3><a data-toggle="collapse" data-parent="#maintenanceAccordionTasks" href="#bedLevelingTasks"> Bed Leveling <i class="icon-chevron-down"></i></a></h3>
 
-				<p>
+			{#	<p>
 					Check and adjust how level your bed is.
-				</p>
+			{#	</p>
 
-				<ul id="bedLevelingTasks" class="collapse">
-					<li>
-						<div class="buttonRow" style="text-align:center;">
-							<div class="buttonColumn">
-								<a data-bind="visible: !$root.hasProbe() && !$root.isDual(), click: function() {$root.nextMaintenanceTask('HotLevel_T0-SE-R0_Load'); window.scroll(0,0); return true}">
-									<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelHot2.jpg', 'width': '100px',} , visible: loginState.isUser " />
+			{#	<ul id="bedLevelingTasks" class="collapse">
+			{#		<li>
+			{#			<div class="buttonRow" style="text-align:center;">
+			{#				<div class="buttonColumn">
+			{#					<a data-bind="visible: !$root.hasProbe() && !$root.isDual(), click: function() {$root.nextMaintenanceTask('HotLevel_T0-SE-R0_Load'); window.scroll(0,0); return true}">
+			{#						<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelHot2.jpg', 'width': '100px',} , visible: loginState.isUser " />
 
-									<br>
-									Hot Bed Leveling (recommended)
-								</a>
-								<a data-bind="visible: !$root.hasProbe() && $root.isDual(), click: function() {$root.nextMaintenanceTask('HotLevel_T0-ID-R0_Load'); window.scroll(0,0); return true}">
-									<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelHot2.jpg', 'width': '100px',} , visible: loginState.isUser " />
+			{#						<br>
+			{#						Hot Bed Leveling (recommended)
+			{#					</a>
+			{#					<a data-bind="visible: !$root.hasProbe() && $root.isDual(), click: function() {$root.nextMaintenanceTask('HotLevel_T0-ID-R0_Load'); window.scroll(0,0); return true}">
+			{#						<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelHot2.jpg', 'width': '100px',} , visible: loginState.isUser " />
 
-									<br>
-									Hot Bed Leveling (recommended)
-								</a>
-							</div>
+			{#						<br>
+			{#						Hot Bed Leveling (recommended)
+			{#					</a>
+			{#				</div>
 
-							<div class="buttonColumn">
-								<a data-bind="visible: !$root.hasProbe() && !$root.isDual(), click: function() {$root.nextMaintenanceTask('ColdLevel_T0-SE-R0_ColdLevel'); window.scroll(0,0); return true}">
-									<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelCold.jpg', 'width': '100px',} , visible: loginState.isUser " />
-									<br>
-									Cold Bed Leveling
-								</a>
-								<a data-bind="visible: !$root.hasProbe() && $root.isDual(), click: function() {$root.nextMaintenanceTask('ColdLevel_T0-ID-R0_ColdLevel'); window.scroll(0,0); return true}">
-									<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelCold.jpg', 'width': '100px',} , visible: loginState.isUser " />
-									<br>
-									Cold Bed Leveling
-								</a>
+			{#				<div class="buttonColumn">
+			{#					<a data-bind="visible: !$root.hasProbe() && !$root.isDual(), click: function() {$root.nextMaintenanceTask('ColdLevel_T0-SE-R0_ColdLevel'); window.scroll(0,0); return true}">
+			{#						<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelCold.jpg', 'width': '100px',} , visible: loginState.isUser " />
+			{#						<br>
+			{#						Cold Bed Leveling
+			{#					</a>
+			{#					<a data-bind="visible: !$root.hasProbe() && $root.isDual(), click: function() {$root.nextMaintenanceTask('ColdLevel_T0-ID-R0_ColdLevel'); window.scroll(0,0); return true}">
+			{#						<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelCold.jpg', 'width': '100px',} , visible: loginState.isUser " />
+			{#						<br>
+			{#						Cold Bed Leveling
+			{#					</a>
 
-							</div>
-							<div class="buttonColumn">
-								<a data-bind="visible: $root.hasProbe(), click: function() {$root.nextMaintenanceTask('Assisted_T0-SE-R1_Assisted'); window.scroll(0,0); return true}">
-									<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelAssisted.jpg', 'width': '100px',} , visible: loginState.isUser " />
+			{#				</div>
+			{#				<div class="buttonColumn">
+			{#					<a data-bind="visible: $root.hasProbe(), click: function() {$root.nextMaintenanceTask('Assisted_T0-SE-R1_Assisted'); window.scroll(0,0); return true}">
+			{#						<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelAssisted.jpg', 'width': '100px',} , visible: loginState.isUser " />
 
-									<br>
-									Assisted Bed Leveling
-								</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</li>
-
-
+			{#						<br>
+			{#						Assisted Bed Leveling
+			{#					</a>
+			{#				</div>
+			{#			</div>
+			{#		</li>
+			{#	</ul>
+			{#</li>
 
 
 
@@ -331,32 +329,34 @@
 
 
 
-			<li class="panel">
-
-				<h3><a data-toggle="collapse" data-parent="#maintenanceAccordionTasks" href="#printerUpgrades"> Printer Upgrades <i class="icon-chevron-down"></i></a></h3>
-
-				<p>
-					Perform printer hardware upgrades.
-				</p>
-
-				<ul id="printerUpgrades" class="collapse">
-					<li>
-						<div class="buttonRow" style="text-align:center;">
-							<div class="buttonColumn">
-								<a data-bind="click: function() {$root.nextMaintenanceTask('PrinterUpgrade_Both-ID-R1_UpgradeSoftware'); window.scroll(0,0); return true}">
-									<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelHot2.jpg', 'width': '100px',} , visible: loginState.isUser " />
-
-									<br>
-									Upgrade M3 ID Rev 0 to Rev 1
-								</a>
-
-							</div>
 
 
-						</div>
-					</li>
-				</ul>
-			</li>
+			{#<li class="panel">
+
+			{#	<h3><a data-toggle="collapse" data-parent="#maintenanceAccordionTasks" href="#printerUpgrades"> Printer Upgrades <i class="icon-chevron-down"></i></a></h3>
+
+			{#	<p>
+			{#		Perform printer hardware upgrades.
+			{#	</p>
+
+			{#	<ul id="printerUpgrades" class="collapse">
+			{#		<li>
+			{#			<div class="buttonRow" style="text-align:center;">
+			{#				<div class="buttonColumn">
+			{#					<a data-bind="click: function() {$root.nextMaintenanceTask('PrinterUpgrade_Both-ID-R1_UpgradeSoftware'); window.scroll(0,0); return true}">
+			{#						<img class="maintenanceImage" data-bind="attr: {'src': '/plugin/mgsetup/static/img/maintenance/nav/bedLevelHot2.jpg', 'width': '100px',} , visible: loginState.isUser " />
+
+			{#						<br>
+			{#						Upgrade M3 ID Rev 0 to Rev 1
+			{#					</a>
+
+			{#				</div>
+
+
+			{#			</div>
+			{#		</li>
+			{#	</ul>
+			{#</li>
 
 
 

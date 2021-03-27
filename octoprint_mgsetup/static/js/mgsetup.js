@@ -5073,7 +5073,7 @@ $(function() {
 			}
 			if (data.probeOffsetLine !== undefined && data.probeOffsetLine !== ""){
 				self.mgLog("probeOffsetline: "+data.probeOffsetLine);
-				self.filter = /M851 Z(.?\d+\.\d+)/;
+				self.filter = /M851.*Z(.?\d+\.\d+)/;
 				if ((match = self.filter.exec(data.probeOffsetLine)) !== null){
 					if (match[1] !== undefined){
 						self.mgLog("probeOffsetLine match: "+match);

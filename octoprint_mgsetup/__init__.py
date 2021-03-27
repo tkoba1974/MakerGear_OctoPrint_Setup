@@ -382,7 +382,7 @@ class MGSetupPlugin(octoprint.plugin.StartupPlugin,
 		return [
 			dict(type="navbar", custom_bindings=True),
 			dict(type="settings", custom_bindings=True),
-			dict(type="tab", template="mgsetup_tab.jinja2", div="tab_plugin_mgsetup"),
+			#dict(type="tab", template="mgsetup_tab.jinja2", div="tab_plugin_mgsetup"),
 			# dict(type="tab", template="mgsetup_maintenance_tab.jinja2", div="tab_plugin_mgsetup_maintenance", name="MakerGear Maintenance"),
 			dict(type="tab", template="mgsetup_maintenance_tab-cleanup.jinja2", div="tab_plugin_mgsetup_maintenance-cleanup", name="MakerGear Maintenance")
 		]
